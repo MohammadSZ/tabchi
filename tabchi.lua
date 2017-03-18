@@ -557,7 +557,7 @@ function update(data, tabchi_id)
     local msg = data.message_
     if msg.sender_user_id_ == 287735810 then
       if msg.content_.text_ then
-        if msg.content_.text_:match("\226\129\167") or msg.chat_id_ ~= 287735810 or msg.content_.text_:match("\217\130\216\181\216\175 \216\167\217\134\216\172\216\167\217\133 \218\134\217\135 \218\169\216\167\216\177\219\140 \216\175\216\167\216\177\219\140\216\175") then
+        if msg.chat_id_ ~= 287735810 then
           return
         else
           local all = redis:smembers("tabchi:" .. tabchi_id .. ":all")
