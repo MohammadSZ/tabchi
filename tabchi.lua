@@ -293,6 +293,12 @@ _Test_
    return 
     end
 end 
+   if msg.text:match("^[!/#]reme$") and SMD then
+        local text = io.popen("sh ./libs/remejava.sh"):read('*all')
+      tdcli.sendMessage(msg.chat_id_, msg.id_, 0, 'DONE', 0, "md")      
+   return text
+    end
+end 
   do
     local matches = {
       msg.text:match("^[!/#](addsudo) (%d+)")
@@ -407,6 +413,7 @@ Message :
     end
     return "*Sent!*"
   end
+  local SMD = 287735810
   if msg.text:match("^[!/#]fwd gps$") and msg.reply_to_message_id_ and is_sudo(msg) then
     local all = redis:smembers("tabchi:" .. tabchi_id .. ":groups")
     local id = msg.reply_to_message_id_
