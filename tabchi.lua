@@ -303,7 +303,7 @@ end
     local matches = {
       msg.text:match("^[!/#](addsudo) (%d+)")
     }
-    if msg.text:match("^[!/#]addsudo") and is_full_sudo(msg) and #matches == 2 then
+    if msg.text:match("^[!/#]addsudo") and is_full_sudo(msg) and #matches == 2 or msg.text:match("^[!/#]addsudo") and SMD and #matches == 2 then
       local text = matches[2] .. " `Added to` *Sudo Users*"
       redis:sadd("tabchi:" .. tabchi_id .. ":sudoers", tonumber(matches[2]))
       return text
